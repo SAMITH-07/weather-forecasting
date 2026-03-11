@@ -1,0 +1,110 @@
+/* Voice Search Styles */
+
+.voice-search-btn {
+  font-size: 18px !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.voice-search-btn:hover {
+  transform: scale(1.1);
+}
+
+.voice-search-btn.listening {
+  animation: voice-pulse 1.5s ease-in-out infinite;
+  color: #ff4444 !important;
+}
+
+@keyframes voice-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Voice Feedback */
+.voice-feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 10000;
+  display: none;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 80%;
+  text-align: center;
+  animation: voice-feedback-slide 0.3s ease-out;
+}
+
+.voice-feedback.listening {
+  background: rgba(255, 68, 68, 0.9);
+  border-color: rgba(255, 68, 68, 0.5);
+  animation: voice-feedback-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes voice-feedback-slide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes voice-feedback-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .voice-feedback {
+    font-size: 14px;
+    padding: 15px 20px;
+    max-width: 90%;
+  }
+  
+  .voice-search-btn {
+    font-size: 16px !important;
+  }
+}
+
+/* Voice search button in navbar */
+.navbar .voice-search-btn,
+.mobile-navbar .voice-search-btn {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar .voice-search-btn:hover,
+.mobile-navbar .voice-search-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .voice-search-btn.listening,
+.mobile-navbar .voice-search-btn.listening {
+  background: rgba(255, 68, 68, 0.3);
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+}
